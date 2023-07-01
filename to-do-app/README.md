@@ -2,6 +2,8 @@
 
 This repository provides an example of how to deploy applications to Kubernetes using Argo CD, a declarative continuous delivery tool for Kubernetes. Argo CD enables automated deployment, rollback, and monitoring of applications running in a Kubernetes cluster.
 
+
+
 ## Prerequisites
 
 Before you can proceed with the deployment using Argo CD, make sure you have the following prerequisites installed:
