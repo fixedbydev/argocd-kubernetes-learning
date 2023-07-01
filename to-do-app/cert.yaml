@@ -9,5 +9,5 @@ spec:
   - devopscrew.tech
   - www.devopscrew.tech
   issuerRef:
-    name: letsencrypt-cluster-issuer
+    name: letsencrypt-prod
     kind: ClusterIssuer
