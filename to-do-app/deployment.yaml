@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: to-do-app
+  labels:
+    app: to-do-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: to-do-app
+  template:
+    metadata:
+      labels:
+        app: to-do-app
+    spec:
+      containers:
+      - name: to-do-app
+        image: teenops/teenops-todo-list:latest
+      imagePullSecrets:
+      - name: dockerhub
