@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: to-do-app
+spec:
+  ingressClassName: "nginx"
+  tls:
+    - hosts:
+        - devopscrew.tech
+        - www.devopscrew.tech
+      secretName: to-do-app-tls
+  rules:
+    - host: "devopscrew.tech"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: to-do-app
+                port:
+                  number: 80
+    - host: "www.devopscrew.tech"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: to-do-app
+                port:
+                  number: 80
+...
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: to-do-app-tls
+  namespace: default
+spec:
+  secretName: to-do-app-tls
+  dnsNames:
+  - devopscrew.tech
+  - www.devopscrew.tech
+  issuerRef:
+    name: letsencrypt-cluster-issuer
+    kind: ClusterIssuer
